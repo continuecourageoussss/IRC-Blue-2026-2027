@@ -16,7 +16,7 @@ public class Drivetrain implements Mechanism {
     private final SparkMax rightMotor = new SparkMax(2, MotorType.kBrushless);
     private final SparkMaxConfig leftMotorConfig = new SparkMaxConfig();
     private final SparkMaxConfig rightMotorConfig = new SparkMaxConfig();
-}
+
 // Constructor
 public Drivetrain() {
     // One motor has to spin in reverse for the robot to go straight
@@ -26,7 +26,7 @@ public Drivetrain() {
     leftMotor.configure(leftMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
     rightMotorConfig.inverted(false);
     rightMotorConfig.smartCurrentLimit(40);
-    rightMotorConfig.secondaryCurrentLimit(limit:80);
+    rightMotorConfig.secondaryCurrentLimit(80);
     rightMotor.configure(rightMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
 }
     private void drive(double leftSpeed, double rightSpeed) {
@@ -44,6 +44,6 @@ public Command driveCommand(CommandNiDsXboxController controller) {
     .whenExited(this::stop)
     .named("Drive");
 }
-
+}
 
     

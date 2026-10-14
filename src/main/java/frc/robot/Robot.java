@@ -54,8 +54,7 @@ public class Robot extends TimedRobot {
       Scheduler.getDefault().cancel(m_autonomousCommand);
     }
   }
-
-  @Override
+    @Override
   public void teleopPeriodic() {}
 
   @Override
