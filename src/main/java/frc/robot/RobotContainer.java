@@ -18,7 +18,8 @@ public class RobotContainer {
   private final Command driveCommand = drivetrain.driveCommand(controller);
 
   private final Arm arm = new Arm();
-  private final Trigger armButton = controller.rightTrigger();
+  private final Trigger armButtonUp = controller.rightTrigger();
+  private final Trigger armButtonDown = controller.leftTrigger();
 
   public RobotContainer() {
     drivetrain.setDefaultCommand(driveCommand);
@@ -27,12 +28,15 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    armButton.whileTrue(arm.liftCommand(0.25));
+    armButtonUp.whileTrue(arm.liftCommand(0.25));
+    armButtonDown.whileTrue(arm.liftCommand(-0.25));
   }
 
   public Command getAutonomousCommand() {
     return Command.noRequirements(Coroutine -> System.out.println("No autonomous command configured")).named("Autonomous Command");
   }
+
+  //useless account
 }
 
 
