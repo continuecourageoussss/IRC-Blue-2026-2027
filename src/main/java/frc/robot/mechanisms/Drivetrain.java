@@ -47,6 +47,15 @@ public class Drivetrain implements Mechanism {
         .whenExited(this::stop)
         .named("Drive");
     }
+
+    public Command autoDriveCommand(double leftSpeed, double rightSpeed) {
+        return run(coroutine -> {
+            drive(leftSpeed, rightSpeed);
+            coroutine.park();
+        })
+        .whenExited(this::stop)
+        .named("Auto Drive");
+    }
 }
 
     
