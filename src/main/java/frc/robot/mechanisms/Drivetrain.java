@@ -42,6 +42,7 @@ public class Drivetrain implements Mechanism {
     }
     public Command driveCommand(CommandNiDsXboxController controller) {
         return runRepeatedly(() -> {
+            System.out.println(controller.getLeftY());
             drive(controller.getLeftY() * 0.2, controller.getRightY() * 0.2);
         })
         .whenExited(this::stop)
