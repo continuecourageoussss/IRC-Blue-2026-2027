@@ -28,8 +28,8 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    armButtonUp.whileTrue(arm.liftCommand(0.25));
-    armButtonDown.whileTrue(arm.liftCommand(-0.25));
+    armButtonUp.whileTrue(arm.liftCommand(0.1));
+    armButtonDown.whileTrue(arm.liftCommand(-0.1));
   }
 
   public Command getAutonomousCommand() {

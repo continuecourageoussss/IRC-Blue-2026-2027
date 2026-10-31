@@ -10,6 +10,8 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
+import edu.wpi.first.math.MathUtil;
+
 public class Drivetrain implements Mechanism {
     //Declare motor controllers
     private final SparkMax leftMotor = new SparkMax(1, MotorType.kBrushless);
@@ -32,7 +34,6 @@ public class Drivetrain implements Mechanism {
     }
     private void drive(double leftSpeed, double rightSpeed) {
         leftMotor.set(leftSpeed);
-
         rightMotor.set(rightSpeed);
     }
     private void stop() {
@@ -42,8 +43,7 @@ public class Drivetrain implements Mechanism {
     }
     public Command driveCommand(CommandNiDsXboxController controller) {
         return runRepeatedly(() -> {
-            System.out.println(controller.getLeftY());
-            drive(controller.getLeftY() * 0.2, controller.getRightY() * 0.2);
+                drive(MathUtil.applyDeadband(controller.getLeftY(), 0.1) * 0.5, MathUtil.applyDeadband(controller.getRightY(), 0.1) * 0.5);
         })
         .whenExited(this::stop)
         .named("Drive");
