@@ -22,12 +22,12 @@ public class Drivetrain implements Mechanism {
     // Constructor
     public Drivetrain() {
         // One motor has to spin in reverse for the robot to go straight
-        leftMotorConfig.inverted(true);
+        leftMotorConfig.inverted(false);
         leftMotorConfig.smartCurrentLimit(40);
         leftMotorConfig.secondaryCurrentLimit(80);
         leftMotor.configure(leftMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
 
-        rightMotorConfig.inverted(false);
+        rightMotorConfig.inverted(true);
         rightMotorConfig.smartCurrentLimit(40);
         rightMotorConfig.secondaryCurrentLimit(80);
         rightMotor.configure(rightMotorConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
