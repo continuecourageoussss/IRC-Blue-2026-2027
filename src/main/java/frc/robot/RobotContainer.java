@@ -31,7 +31,6 @@ public class RobotContainer {
     armButtonUp.whileTrue(arm.liftCommand(0.1));
     armButtonDown.whileTrue(arm.liftCommand(-0.1));
   }
-
   public Command getAutonomousCommand() {
     return Command.noRequirements(Coroutine -> System.out.println("No autonomous command configured")).named("Autonomous Command");
   }
